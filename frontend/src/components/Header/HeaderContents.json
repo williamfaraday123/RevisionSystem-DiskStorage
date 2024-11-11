@@ -1,0 +1,10 @@
+[
+    {
+        "name": "View files",
+        "path": "/user"
+    },
+    {
+        "name": "Upload files",
+        "path": "/admin"
+    }
+]
