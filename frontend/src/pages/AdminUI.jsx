@@ -3,6 +3,8 @@ import { useState } from 'react';
 import FileUploader from '../components/AdminUIComponents/FileUploader';
 import SortFilter from "../components/SortFilter/SortFilter";
 
+import { sendUploadData } from '../services/adminServices';
+
 const AdminUI = () => {
     const [selectedFilters, setSelectedFilters] = useState(null);
     const [file, setFile] = useState(null);
@@ -10,7 +12,7 @@ const AdminUI = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData();
-        formData.append('filters', selectedFilters);
+        formData.append('filters', JSON.stringify(selectedFilters));
         formData.append('file', file);
 
         try {
