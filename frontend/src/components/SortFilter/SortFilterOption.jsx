@@ -1,4 +1,12 @@
-const SortFilterOption = ({ filter, options, onSelectOption }) => {
+import { useState } from 'react';
+import SortFilterInsert from "./SortFilterInsert";
+
+const SortFilterOption = ({ filter, options, onSelectOption, onNewOptionAdded }) => {
+    const [visible, setVisible] = useState(false);
+    const toggleVisibility = async (e) => {
+        e.preventDefault();
+        setVisible((prevVisibility) => !prevVisibility);
+    };
     return(
         <div>
             <div>{filter}</div>
@@ -12,6 +20,12 @@ const SortFilterOption = ({ filter, options, onSelectOption }) => {
                     >{option}</option>
                 ))}
             </select>
+            <button onClick = {toggleVisibility}>Add new option for {filter}</button>
+            {visible && (
+                <SortFilterInsert 
+                    filter = {filter} 
+                    onNewOptionAdded = {onNewOptionAdded} 
+                />)}
         </div>
     );
 };
