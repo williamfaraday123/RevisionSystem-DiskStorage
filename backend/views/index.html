@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Filter Options</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+    <h1>Filter Options</h1>
+    <table id="filter-options-table">
+        <thead>
+            <tr>
+                <th>Filter</th>
+                <th>Option</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data will be injected here -->
+        </tbody>
+    </table>
+    <script>
+        // Fetch filter options from the backend and display them in the table
+        fetch('/api/views')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById('filter-options-table').getElementsByTagName('tbody')[0];
+                data.forEach(row => {
+                    const tr = document.createElement('tr');
+                    const filterTd = document.createElement('td');
+                    filterTd.textContent = row.filter;
+                    const optionTd = document.createElement('td');
+                    optionTd.textContent = row.option;
+                    tr.appendChild(filterTd);
+                    tr.appendChild(optionTd);
+                    tableBody.appendChild(tr);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching filter options:', error);
+            });
+    </script>
+</body>
+</html>
