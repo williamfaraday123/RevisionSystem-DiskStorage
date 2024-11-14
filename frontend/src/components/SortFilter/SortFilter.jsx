@@ -12,7 +12,7 @@ const SortFilter = ({ setSelectedFilters }) => {
         });
         return initialFilterOptions;
     });
-    const [newOptionAdded, setNewOptionAdded] = useState(false);
+    const [optionAddedOrDeleted, setOptionAddedOrDeleted] = useState(false);
     const [SortFilterOptionsJSON, setSortFilterOptionsJSON] = useState(null);
     useEffect(() => {
         const fetchFilterOptions = async () => {
@@ -24,9 +24,9 @@ const SortFilter = ({ setSelectedFilters }) => {
             }
         };
         fetchFilterOptions();
-    }, [newOptionAdded]);
-    const handleNewOptionAdded = () => {
-        setNewOptionAdded(prevState => !prevState); //toggle the state to render the useEffect above whenever new option is added
+    }, [optionAddedOrDeleted]);
+    const handleOptionAddedOrDeleted = () => {
+        setOptionAddedOrDeleted(prevState => !prevState); //toggle the state to render the useEffect above whenever new option is added or deleted
     };
 
     const handleSelectOption = (e, filter) => {
@@ -49,7 +49,7 @@ const SortFilter = ({ setSelectedFilters }) => {
                     filter = {SortFilterOptionJSON.filter}
                     options = {SortFilterOptionJSON.options}
                     onSelectOption = {(e) => handleSelectOption(e, SortFilterOptionJSON.filter)}
-                    onNewOptionAdded = {handleNewOptionAdded}
+                    onOptionModified = {handleOptionAddedOrDeleted}
                 />
             ))}
             <button onClick = {handleSubmit}>Submit</button>

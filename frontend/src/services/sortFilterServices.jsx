@@ -1,10 +1,11 @@
 import axios from 'axios';
 
-export const insertFilterOption = async ({ filter, option }) => {
+export const modifyFilterOptions = async ({ filter, option, action }) => {
     try {
         const response = await axios.post('http://localhost:8000/api/sort-filter', {
             filter,
-            option
+            option,
+            action
         });
         return response;
     } catch (error) {

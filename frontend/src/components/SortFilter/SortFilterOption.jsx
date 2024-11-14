@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import SortFilterInsert from "./SortFilterInsert";
 
-const SortFilterOption = ({ filter, options, onSelectOption, onNewOptionAdded }) => {
+const SortFilterOption = ({ filter, options, onSelectOption, onOptionModified }) => {
     const [visible, setVisible] = useState(false);
     const toggleVisibility = async (e) => {
         e.preventDefault();
@@ -20,11 +20,11 @@ const SortFilterOption = ({ filter, options, onSelectOption, onNewOptionAdded })
                     >{option}</option>
                 ))}
             </select>
-            <button onClick = {toggleVisibility}>Add new option for {filter}</button>
+            <button onClick = {toggleVisibility}>Add/Delete new option for {filter}</button>
             {visible && (
                 <SortFilterInsert 
                     filter = {filter} 
-                    onNewOptionAdded = {onNewOptionAdded} 
+                    onOptionModified = {onOptionModified} 
                 />)}
         </div>
     );
