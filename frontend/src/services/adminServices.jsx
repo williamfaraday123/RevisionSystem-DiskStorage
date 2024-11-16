@@ -26,3 +26,16 @@ export const sendUploadData = async (formData) => {
         throw error;
     }
 };
+
+export const sendDeleteData = async (filters) => {
+    try {
+        await axios.post('http://localhost:8000/api//delete-file', { filters }, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        });
+    } catch (error) {
+        console.error("file delete error", error);
+        throw error;
+    }
+}

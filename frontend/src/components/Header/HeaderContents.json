@@ -5,6 +5,10 @@
     },
     {
         "name": "Upload files",
-        "path": "/admin"
+        "path": "/admin-upload"
+    },
+    {
+        "name": "Delete files",
+        "path": "/admin-delete"
     }
 ]

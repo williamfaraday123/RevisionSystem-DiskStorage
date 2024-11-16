@@ -1,12 +1,13 @@
 import {
     BrowserRouter,
-    Routes,
-    Route
+    Route,
+    Routes
 } from 'react-router-dom';
 
-import UserUI from './pages/UserUI';
-import AdminUI from './pages/AdminUI';
+import AdminDeleteUI from './pages/AdminDeleteUI';
+import AdminUploadUI from './pages/AdminUploadUI';
 import LayoutUI from './pages/LayoutUI';
+import UserUI from './pages/UserUI';
 
 const App = () => {
     return(
@@ -14,7 +15,8 @@ const App = () => {
             <Routes>
                 <Route path = "/" Component = {LayoutUI}>
                     <Route path = "user" Component = {UserUI} />
-                    <Route path = "admin" Component = {AdminUI} />
+                    <Route path = "admin-upload" Component = {AdminUploadUI} />
+                    <Route path = "admin-delete" Component = {AdminDeleteUI} />
                 </Route>
             </Routes>
         </BrowserRouter>
