@@ -1,8 +1,10 @@
 import axios from 'axios';
 
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
 export const modifyFilterOptions = async ({ filter, option, action }) => {
     try {
-        const response = await axios.post('http://localhost:8000/api/sort-filter', {
+        const response = await axios.post(`${backendUrl}/api/sort-filter`, {
             filter,
             option,
             action
@@ -16,7 +18,7 @@ export const modifyFilterOptions = async ({ filter, option, action }) => {
 
 export const retrieveFilterOptionsData = async (filters) => {
     try {
-        const response = await axios.get('http://localhost:8000/api/sort-filter', { 
+        const response = await axios.get(`${backendUrl}/api/sort-filter`, { 
             params: { filters }
         });
         console.log('response:', response);

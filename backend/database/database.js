@@ -79,7 +79,7 @@ class Database {
 }
 
 //Ensure only one immutable instance exists
-const instance = new Database('./database/database.db');
+const instance = new Database('./database.db');
 Object.freeze(instance);
 
 module.exports = instance;

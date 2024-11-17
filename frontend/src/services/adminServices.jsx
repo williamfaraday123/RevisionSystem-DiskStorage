@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
 // Add a request interceptor to log the request
 axios.interceptors.request.use((request) => {
     console.log('Request Data:', request.data); // Logs the form data
@@ -16,7 +18,7 @@ export const sendUploadData = async (formData) => {
             console.log(key, value);
         }
 
-        await axios.post('http://localhost:8000/api/uploads', formData, {
+        await axios.post(`${backendUrl}/api/uploads`, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             },
@@ -29,7 +31,7 @@ export const sendUploadData = async (formData) => {
 
 export const sendDeleteData = async (filters) => {
     try {
-        await axios.post('http://localhost:8000/api//delete-file', { filters }, {
+        await axios.post(`${backendUrl}/api//delete-file`, { filters }, {
             headers: {
                 'Content-Type': 'application/json'
             },
