@@ -20,12 +20,16 @@ const SortFilterOption = ({ filter, options, onSelectOption, onOptionModified })
                     >{option}</option>
                 ))}
             </select>
-            <button onClick = {toggleVisibility}>Add/Delete new option for {filter}</button>
-            {visible && (
-                <SortFilterInsert 
-                    filter = {filter} 
-                    onOptionModified = {onOptionModified} 
-                />)}
+            {filter != 'type' && ( //don't allow add/delete option for 'type' as the code rely on absolute path for files with different 'type'
+                <>
+                    <button onClick = {toggleVisibility}>Add/Delete new option for {filter}</button>
+                    {visible && (
+                        <SortFilterInsert 
+                            filter = {filter} 
+                            onOptionModified = {onOptionModified} 
+                        />)}
+                </>
+            )}
         </div>
     );
 };
