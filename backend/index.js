@@ -23,4 +23,11 @@ app.listen(port, () => {
     console.log(`Server is listening on localhost:${port}`);
 }); */
 
+
+//for deployment
+app.use((req, res, next) => {
+    res.setHeader("Content-Security-Policy", "default-src 'none'; script-src 'https://vercel.live'");
+    next();
+  });
+  
 module.exports = app; // Export the app for serverless deployment
